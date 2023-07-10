@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Register</h1>
+
+        </div>
+
+        <form [formGroup]="signUpForm">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Full Name </label>
+            <input formControlName="first_name" type="text" class="form-control" id="exampleInputPassword1"><br>
+            <span class="text-danger"
+              *ngIf="signUpForm.controls['first_name'].dirty&&signUpForm.hasError('required','first_name')">*Fullname is
+              required</span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Last Name </label>
+            <input formControlName="last_name" type="text" class="form-control" id="exampleInputPassword1"><br>
+            <span class="text-danger"
+              *ngIf="signUpForm.controls['last_name'].dirty&&signUpForm.hasError('required','last_name')">lastname is
+              required</span>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+            <span class="text-danger"
+              *ngIf="signUpForm.controls['email'].dirty&&signUpForm.hasError('required','email')">*Email is
+              required</span>
+            <span class="text-danger"
+              *ngIf="signUpForm.get('email')?.hasError('email') && signUpForm.get('email')?.touched">
+              Invalid email format
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"> Mobile </label>
+            <input formControlName="mobile" type="number" class="form-control" id="exampleInputPassword1"><br>
+            <span class="text-danger"
+              *ngIf="signUpForm.controls['mobile'].dirty&&signUpForm.hasError('required','mobile')">*mobile is
+              required</span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"><br>
+            <span class="text-danger"
+              *ngIf="signUpForm.controls['password'].dirty&&signUpForm.hasError('required','password')">*Password is
+              required</span>
+            <span class="text-danger" *ngIf="signUpForm.get('password')?.errors?.['minlength']">
+              Password should be at least 6 characters long
+            </span>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Address </label>
+              <input formControlName="address" type="text" class="form-control" id="exampleInputPassword1"><br>
+              <span class="text-danger"
+                *ngIf="signUpForm.controls['address'].dirty&&signUpForm.hasError('required','address')">address is
+                required</span>
+            </div>
+          </div>
+
+          <button (click)="submit()" type="submit" class="btn btn-dark" [disabled]="!signUpForm.valid">Register</button>
+        </form>
+        <a style="color: rgb(12, 13, 13);margin-top: 10px;" routerLink="/login">Altrady Registered ? Click To
+          Login!!</a>
+      </div>
+    </div>
+  </div>
+</div>
